@@ -12,9 +12,9 @@ int main(int argc, char const* argv[])
 {
     int listenfd = -1;
     int connfd = -1;
-    struct sockaddr_in server_addr;
-    struct sockaddr_in client_addr; // To store the client's address
-    socklen_t client_len; // To store the size of the client's address
+    struct sockaddr_in server_addr; // chua dia chi cua server
+    struct sockaddr_in client_addr; // chua dia chi cua client
+    socklen_t client_len; // luu tru kich thuoc dia chi client
     char send_buffer[1024];
     char recv_buffer[1024];
     time_t ticks;
@@ -41,15 +41,15 @@ int main(int argc, char const* argv[])
 
     listen(listenfd, 10);
 
-    printf("Server listening on 127.0.0.1:5000\n");
+    printf("Server listening\n");
 
     while (1)
     {
-        client_len = sizeof(client_addr); // Initialize the size of the client's address
+        client_len = sizeof(client_addr); // khoi tao kich thuoc dia chi client
         connfd = accept(listenfd, (struct sockaddr*)&client_addr, &client_len);
         if (connfd == -1) {
             perror("accept");
-            continue; // Continue to the next iteration to handle other connections
+            continue; 
         }
 
         ticks = time(NULL);
@@ -57,7 +57,7 @@ int main(int argc, char const* argv[])
         write(connfd, send_buffer, strlen(send_buffer));
 
         while (1) {
-            // Receive message from the client
+            // nhan message tu client 
             memset(recv_buffer, 0, sizeof(recv_buffer));
             read(connfd, recv_buffer, sizeof(recv_buffer) - 1);
 
@@ -66,16 +66,16 @@ int main(int argc, char const* argv[])
                 sprintf(send_buffer, "Server: Goodbye!\n");
                 write(connfd, send_buffer, strlen(send_buffer));
                 close(connfd);
-                break; // Exit the inner loop and wait for the next connection
+                break; 
             }
 
             printf("Client: %s", recv_buffer);
 
-            // Get user input to send a reply to the client
+            // nhan input user send & rep for client
             printf("Server: ");
             fgets(send_buffer, sizeof(send_buffer), stdin);
 
-            // Send the reply back to the client
+            // gui<->tra loi cho client
             write(connfd, send_buffer, strlen(send_buffer));
         }
     }
