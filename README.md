@@ -9,6 +9,10 @@ Using Socket programming to make a real-time chatroom in c
 2. You may run multiple client instances to test the script
 
 ### Chatroom functionality
+#####compile
+    make
+
+#####usage
 
 
 | Command       | Parameter             | Desription                          |
