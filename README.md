@@ -14,7 +14,7 @@ Using Socket programming to make a real-time chatroom in c
 | Command       | Parameter             | Desription                          |
 | ------------- | --------------------- | ----------------------------------- |
 | quit          |                       | Leave the chatroom                  |
-| ./client           |  "text from client"               | send the msg to all online users (use"")    |
+| ./client           |  "text from client"               | send the msg to all online users ("use")    |
 | ./server           |   "text from server"         | Send the msg to a particular user              |
 
 ### Server
