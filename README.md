@@ -1,6 +1,6 @@
 # socket-programming
 ## Real-time-chat-application-in-c
-[![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red.svg)](https://github.com/thuanln07/socket-programming)
+
 
 Using Socket programming to make a real-time chatroom in c 
 
